@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lalong ITC Final Project</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>ITC Final Project (CS1130) by Lalong</h1>
+        <nav>
+            <button onclick="showPage('home')">Home</button>
+            <button onclick="showPage('assignment1')">Assignment 1</button>
+            <button onclick="showPage('assignment2')">Assignment 2</button>
+            <button onclick="showPage('assignment3')">Assignment 3</button>
+            <button onclick="showPage('assignment4')">Assignment 4</button>
+        </nav>
+    </header>
+
+    <main id="content">
+        <section id="home" class="page active">
+            <p>ITC Final Project by Zainne Nazar L. Lalong</p>
+            <p>CS 1-A</p>
+        </section>
+
+        <section id="assignment1" class="page">
+            <h2>Assignment #1: Conversion</h2>
+            <div class="conversion-box">
+                <h3>Celsius to Fahrenheit</h3>
+                <input type="number" id="celsius" placeholder="Enter Celsius">
+                <button onclick="celsiusToFahrenheit()">Convert</button>
+                <p id="result1"></p>
+            </div>
+            
+            <div class="conversion-box">
+                <h3>Fahrenheit to Celsius</h3>
+                <input type="number" id="fahrenheit" placeholder="Enter Fahrenheit">
+                <button onclick="fahrenheitToCelsius()">Convert</button>
+                <p id="result2"></p>
+            </div>
+            
+            <div class="conversion-box">
+                <h3>Meters to Feet</h3>
+                <input type="number" id="meters" placeholder="Enter Meters">
+                <button onclick="metersToFeet()">Convert</button>
+                <p id="result3"></p>
+            </div>
+            
+            <div class="conversion-box">
+                <h3>Feet to Meters</h3>
+                <input type="number" id="feet" placeholder="Enter Feet">
+                <button onclick="feetToMeters()">Convert</button>
+                <p id="result4"></p>
+            </div>
+        </section>
+
+        <section id="assignment2" class="page">
+            <h2>Assignment #2: Income Tax Calculator</h2>
+            <div class="tax-calculator">
+                <label for="income">Annual Income (₱):</label>
+                <input type="number" id="income" placeholder="Enter your income">
+                <button onclick="calculateTax()">Calculate Tax</button>
+                <p id="tax-result"></p>
+            </div>
+        </section>
+
+        <section id="assignment3" class="page">
+            <h2>Assignment #3: Mathematical Calculations</h2>
+            <div class="calculation-box">
+                <h3>Enter N (Natural Numbers)</h3>
+                <input type="number" id="n-value" placeholder="Enter value of N">
+                <button onclick="calculateFactorial()">Factorial (While Loop)</button>
+                <p id="factorial-result"></p>
+            </div>
+            
+            <div class="calculation-box">
+                <h3>Sum of First N Numbers</h3>
+                <button onclick="calculateSum()">Sum (Do While Loop)</button>
+                <p id="sum-result"></p>
+            </div>
+            
+            <div class="calculation-box">
+                <h3>Average of First N Numbers</h3>
+                <button onclick="calculateAverage()">Average (For Loop)</button>
+                <p id="average-result"></p>
+            </div>
+        </section>
+
+        <section id="assignment4" class="page">
+            <h2>Assignment #4: Simple Payroll</h2>
+            <table id="payroll-table">
+                <thead>
+                    <tr>
+                        <th>Employee Name</th>
+                        <th>Hours Worked</th>
+                        <th>Hourly Rate</th>
+                        <th>Gross Pay</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>40</td>
+                        <td>P200.00</td>
+                        <td>P8000.00</td>
+                    </tr>
+                    <tr>
+                        <td>Jane Smith</td>
+                        <td>35</td>
+                        <td>P200.00</td>
+                        <td>P7000.00</td>
+                    </tr>
+                    <tr>
+                        <td>Bob Johnson</td>
+                        <td>45</td>
+                        <td>P200.00</td>
+                        <td>P9000.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
