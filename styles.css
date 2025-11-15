@@ -15,7 +15,7 @@ header {
     background-color: #6B7CC5; 
     color: white;
     padding: 5rem 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);\
 }
 
 header h1 {
@@ -30,7 +30,7 @@ nav {
 }
 
 nav button {
-    background-color: #6D1168; 
+    background-color: #6D1168;
     color: white;
     border: none;
     padding: 0.7rem 1.5rem;
@@ -54,7 +54,7 @@ main {
 .page {
     display: none;
     background-color: white;
-    padding: 2rem;
+    padding: 2rem;\
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
@@ -90,23 +90,35 @@ li {
     margin: 0.5rem 0;
 }
 
-.conversion-box, .tax-calculator, .calculation-box {
+.conversion-box, .tax-calculator, .calculation-box, .payroll-inputs, .payroll-actions {
     background-color: #ecf0f1;
     padding: 1.5rem;
     margin: 1rem 0;
     border-radius: 6px;
 }
 
-.conversion-box input, .tax-calculator input {
+.conversion-box input, .tax-calculator input,
+.payroll-inputs input[type="text"],
+.payroll-inputs input[type="number"],
+.payroll-actions input[type="number"] {
     width: 200px;
     padding: 0.5rem;
     margin: 0.5rem 0;
     border: 1px solid #ddd;
     border-radius: 4px;
+    vertical-align: middle; 
 }
 
-.conversion-box button, .tax-calculator button, .calculation-box button {
-    background-color: #B9C5E0; 
+.payroll-inputs label, .payroll-actions label {
+    display: inline-block;
+    width: 150px; 
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.conversion-box button, .tax-calculator button, .calculation-box button,
+.payroll-inputs button, .payroll-actions button {
+    background-color: #B9C5E0;
     color: white;
     border: none;
     padding: 0.5rem 1rem;
@@ -116,7 +128,8 @@ li {
     transition: background-color 0.3s;
 }
 
-.conversion-box button:hover, .tax-calculator button:hover, .calculation-box button:hover {
+.conversion-box button:hover, .tax-calculator button:hover, .calculation-box button:hover,
+.payroll-inputs button:hover, .payroll-actions button:hover {
     background-color: #825965; 
 }
 
@@ -149,4 +162,8 @@ tr:nth-child(even) {
 
 tr:hover {
     background-color: #e8f4f8;
+}
+
+#payroll-table th, #payroll-table td {
+    white-space: nowrap; 
 }
