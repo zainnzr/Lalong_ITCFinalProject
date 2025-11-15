@@ -89,34 +89,44 @@
 
         <section id="assignment4" class="page">
             <h2>Assignment #4: Simple Payroll</h2>
+            <div class="payroll-inputs">
+                <h3>Add New Employee</h3>
+                <label for="employeeName">Employee Name:</label>
+                <input type="text" id="employeeName" placeholder="Enter name"><br>
+
+                <label for="daysWorked">Days Worked:</label>
+                <input type="number" id="daysWorked" placeholder="Enter days worked"><br>
+
+                <label for="dailyRate">Daily Rate (₱):</label>
+                <input type="number" id="dailyRate" placeholder="Enter daily rate"><br>
+
+                <label for="deductionAmount">Deduction Amount (₱):</label>
+                <input type="number" id="deductionAmount" placeholder="Enter deduction"><br>
+
+                <button onclick="addEmployee()">Add Employee</button>
+            </div>
+
+            <div class="payroll-actions">
+                <h3>Delete Employee</h3>
+                <label for="deleteLineNumber">Line Number to Delete:</label>
+                <input type="number" id="deleteLineNumber" placeholder="Enter line number">
+                <button onclick="deleteEmployee()">Delete Employee</button>
+            </div>
+            
             <table id="payroll-table">
                 <thead>
                     <tr>
+                        <th>No.</th>
                         <th>Employee Name</th>
-                        <th>Hours Worked</th>
-                        <th>Hourly Rate</th>
+                        <th>Days Worked</th>
+                        <th>Daily Rate</th>
                         <th>Gross Pay</th>
+                        <th>Deduction Amount</th>
+                        <th>Net Pay</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>John Doe</td>
-                        <td>40</td>
-                        <td>P200.00</td>
-                        <td>P8000.00</td>
-                    </tr>
-                    <tr>
-                        <td>Jane Smith</td>
-                        <td>35</td>
-                        <td>P200.00</td>
-                        <td>P7000.00</td>
-                    </tr>
-                    <tr>
-                        <td>Bob Johnson</td>
-                        <td>45</td>
-                        <td>P200.00</td>
-                        <td>P9000.00</td>
-                    </tr>
+                    
                 </tbody>
             </table>
         </section>
