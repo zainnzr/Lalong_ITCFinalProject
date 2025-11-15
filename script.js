@@ -49,20 +49,24 @@ function feetToMeters() {
 
 function calculateTax() {
     const income = parseFloat(document.getElementById('income').value);
-    if (!isNaN(income)) {
-        let tax;
-        if (income <= 10000) {
-            tax = income * 0.10;
-        } else if (income <= 40000) {
-            tax = 1000 + (income - 10000) * 0.15;
-        } else if (income <= 85000) {
-            tax = 5500 + (income - 40000) * 0.25;
-        } else {
-            tax = 16750 + (income - 85000) * 0.35;
+    if (!isNaN(income) && income >= 0) {
+        let tax = 0;
+        if (income <= 250000) {
+            tax = 0;
+        } else if (income <= 400000) {
+            tax = (income - 250000) * 0.20;
+        } else if (income <= 800000) {
+            tax = 30000 + (income - 400000) * 0.25;
+        } else if (income <= 2000000) {
+            tax = 130000 + (income - 800000) * 0.30;
+        } else if (income <= 8000000) {
+            tax = 490000 + (income - 2000000) * 0.32;
+        } else { 
+            tax = 2410000 + (income - 8000000) * 0.35;
         }
         document.getElementById('tax-result').textContent = `Income Tax: ₱${tax.toFixed(2)}`;
     } else {
-        document.getElementById('tax-result').textContent = "Please enter a valid income amount";
+        document.getElementById('tax-result').textContent = "Please enter a valid non-negative income amount";
     }
 }
 
@@ -110,6 +114,87 @@ function calculateAverage() {
     }
 }
 
+
+let employees = []; 
+
+function renderPayrollTable() {
+    const payrollTableBody = document.querySelector('#payroll-table tbody');
+    payrollTableBody.innerHTML = ''; 
+
+    employees.forEach((employee, index) => {
+        const row = payrollTableBody.insertRow();
+        row.insertCell().textContent = index + 1; 
+        row.insertCell().textContent = employee.name;
+        row.insertCell().textContent = employee.daysWorked;
+        row.insertCell().textContent = `₱${employee.dailyRate.toFixed(2)}`;
+        row.insertCell().textContent = `₱${employee.grossPay.toFixed(2)}`;
+        row.insertCell().textContent = `₱${employee.deductionAmount.toFixed(2)}`;
+        row.insertCell().textContent = `₱${employee.netPay.toFixed(2)}`;
+    });
+}
+
+function addEmployee() {
+    const employeeName = document.getElementById('employeeName').value.trim();
+    const daysWorked = parseFloat(document.getElementById('daysWorked').value);
+    const dailyRate = parseFloat(document.getElementById('dailyRate').value);
+    const deductionAmount = parseFloat(document.getElementById('deductionAmount').value);
+
+
+    if (!employeeName) {
+        alert("Employee Name cannot be empty.");
+        return;
+    }
+    if (isNaN(daysWorked) || daysWorked < 0) {
+        alert("Please enter a valid non-negative number for Days Worked.");
+        return;
+    }
+    if (isNaN(dailyRate) || dailyRate < 0) {
+        alert("Please enter a valid non-negative number for Daily Rate.");
+        return;
+    }
+    if (isNaN(deductionAmount) || deductionAmount < 0) {
+        alert("Please enter a valid non-negative number for Deduction Amount.");
+        return;
+    }
+
+    const grossPay = daysWorked * dailyRate;
+    const netPay = grossPay - deductionAmount;
+
+    const newEmployee = {
+        name: employeeName,
+        daysWorked: daysWorked,
+        dailyRate: dailyRate,
+        grossPay: grossPay,
+        deductionAmount: deductionAmount,
+        netPay: netPay
+    };
+
+    employees.push(newEmployee);
+    renderPayrollTable(); 
+
+    document.getElementById('employeeName').value = '';
+    document.getElementById('daysWorked').value = '';
+    document.getElementById('dailyRate').value = '';
+    document.getElementById('deductionAmount').value = '';
+}
+
+function deleteEmployee() {
+    const lineNumber = parseInt(document.getElementById('deleteLineNumber').value);
+
+    if (isNaN(lineNumber) || lineNumber <= 0 || lineNumber > employees.length) {
+        alert("Please enter a valid line number to delete.");
+        return;
+    }
+
+    const indexToDelete = lineNumber - 1;
+    employees.splice(indexToDelete, 1);
+    renderPayrollTable(); 
+
+    document.getElementById('deleteLineNumber').value = '';
+}
+
+
 document.addEventListener('DOMContentLoaded', function() {
     showPage('home');
+    renderPayrollTable(); 
 });
